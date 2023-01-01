@@ -1,0 +1,20 @@
+#机器人功能设置
+Ver: '1.1'
+
+#消息转发
+Forwarding: true
+
+#死亡报告
+DieReport: false
+
+#白名单
+WhiteList: false
+
+#执行命令功能
+CMD: true
+
+#进出提示
+JoinAndLeave: true
+
+#在线玩家查询
+Online: true
