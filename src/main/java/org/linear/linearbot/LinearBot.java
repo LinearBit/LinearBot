@@ -41,7 +41,7 @@ public final class LinearBot extends JavaPlugin implements Listener{
         getLogger().info( "LinearBot已启动");
         /*List<Long> groups = Config.getGroupQQ();
         for (long groupID : groups) {
-            Bot.sendMsg("插件已启动", groupID);
+            Bot.sendMsg("LinearBot已启动", groupID);
         }*/
     }
 
@@ -50,7 +50,7 @@ public final class LinearBot extends JavaPlugin implements Listener{
         getLogger().info("LinearBot已关闭");
         List<Long> groups = Config.getGroupQQs();
         for (long groupID : groups) {
-            Bot.sendMsg("插件已关闭", groupID);
+            Bot.sendMsg("LinearBot已关闭", groupID);
         }
     }
 
