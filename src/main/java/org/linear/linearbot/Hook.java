@@ -16,14 +16,10 @@ public class Hook {
                 hasAuthMe = true;
                 authMeApi = AuthMeApi.getInstance();
                 LinearBot.INSTANCE.getLogger().info("AuthMe 关联成功");
-                try {
-                } catch (Throwable e) {
-                    hasAuthMe = false;
-                    LinearBot.INSTANCE.getLogger().info("AuthMe 关联失败");
-                }
             }
         } catch (Throwable e) {
-            e.printStackTrace();
+            hasAuthMe = false;
+            LinearBot.INSTANCE.getLogger().info("AuthMe 关联失败");
         }
 
 /*
