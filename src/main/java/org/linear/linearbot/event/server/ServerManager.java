@@ -1,10 +1,10 @@
 package org.linear.linearbot.event.server;
 
-import org.linear.linearbot.LinearBot;
-import org.linear.linearbot.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.linear.linearbot.LinearBot;
+import org.linear.linearbot.config.Config;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -26,8 +26,7 @@ public class ServerManager {
         if(!Config.CMD()){
             return;
         }
-        new BukkitRunnable(){
-            @Override
+        (new BukkitRunnable(){
             public void run(){
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(),cmd);
                 //Bukkit.getScheduler().runTaskTimer(LinearBot.INSTANCE,0L,);
@@ -50,6 +49,6 @@ public class ServerManager {
                     msgList.clear();
                 },0L,0);*/
             }
-        }.runTask(LinearBot.INSTANCE);
+        }).runTask(LinearBot.INSTANCE);
     }
 }
