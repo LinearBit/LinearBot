@@ -5,6 +5,8 @@ api-version: 1.18
 prefix: LinearBot
 authors: [ Linear ]
 depend: [ MiraiMC ]
+softdepend:
+  - AuthMe
 
 commands:
   linearbot:
