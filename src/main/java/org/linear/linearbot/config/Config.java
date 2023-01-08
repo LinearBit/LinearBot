@@ -84,8 +84,4 @@ public class Config {
     public static boolean Online(){
         return  getConfigYaml().getBoolean("Online");
     }
-
-    public static boolean Stats(){
-        return  getConfigYaml().getBoolean("Stats");
-    }
 }
