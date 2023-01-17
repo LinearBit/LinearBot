@@ -1,5 +1,5 @@
 #机器人功能设置
-Ver: '1.1'
+Ver: '1.2'
 
 #消息转发
 Forwarding: true
@@ -18,3 +18,12 @@ JoinAndLeave: true
 
 #在线玩家查询
 Online: true
+
+#tps查询
+TPS: true
+
+#自定义命令
+SDC: true
+
+#自定义回复
+SDR: true

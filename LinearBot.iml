@@ -21,36 +21,55 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.purpurmc.purpur:purpur-api:1.16.5-R0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-api:4.7.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-key:4.7.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:examination-api:1.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:examination-string:1.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.checkerframework:checker-qual:3.11.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.jetbrains:annotations:20.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-gson:4.7.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-legacy:4.7.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-plain:4.7.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-lang:commons-lang:2.6" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:31.0.1-jre" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.checkerframework:checker-qual:3.12.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.errorprone:error_prone_annotations:2.7.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.j2objc:j2objc-annotations:1.3" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.gson:gson:2.8.9" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: junit:junit:4.10" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:21.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.gson:gson:2.8.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.md-5:bungeecord-chat:1.16-R0.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.yaml:snakeyaml:1.30" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid:MiraiMC-Integration:1.7" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid:MiraiMC-Base:1.7" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.yaml:snakeyaml:1.27" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm:9.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-commons:9.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-tree:9.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-analysis:9.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid:MiraiMC:1.7.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid.MiraiMC:MiraiMC-Base:1.7.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.zaxxer:HikariCP:4.0.3" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-api:2.0.0-alpha1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-codec:commons-codec:1.15" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpcore:4.4.13" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-logging:commons-logging:1.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid:MiraiMC-Bukkit:1.7" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid:MiraiMC-Bungee:1.7" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid:MiraiMC-Sponge:1.7" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid:MiraiMC-Nukkit:1.7" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid:MiraiMC-Velocity:1.7" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.MilkBowl:VaultAPI:1.7" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.bukkit:bukkit:1.13.1-R0.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: junit:junit:4.10" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid.MiraiMC:MiraiMC-Bukkit:1.7.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid.MiraiMC:MiraiMC-Bungee:1.7.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid.MiraiMC:MiraiMC-Integration:1.7.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid.MiraiMC:MiraiMC-Nukkit:1.7.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid.MiraiMC:MiraiMC-Sponge:1.7.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: io.github.dreamvoid.MiraiMC:MiraiMC-Velocity:1.7.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: me.clip:placeholderapi:2.10.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: fr.xephi:authme:5.6.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.maxgamer:QuickShop:5.1.1.2" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.bekvon.bukkit.residence:Residence:5.1.0.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/Residence5.1.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

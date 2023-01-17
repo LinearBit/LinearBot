@@ -10,11 +10,15 @@ public class Config {
     private static final LinearBot INSTANCE = LinearBot.INSTANCE;
     private static final File botFile = new File(INSTANCE.getDataFolder(), "bot.yml");
     private static final File configFile = new File(INSTANCE.getDataFolder(), "config.yml");
+    private static final File returnsFile = new File(INSTANCE.getDataFolder(), "returns.yml");
+    private static final File commandsFile = new File(INSTANCE.getDataFolder(), "commands.yml");
     private static YamlConfiguration bot;
     private static YamlConfiguration config;
+    private static YamlConfiguration returns;
+    private static YamlConfiguration commands;
 
     public static void createConfig(){
-        File[] allFile = {botFile,configFile};
+        File[] allFile = {botFile,configFile,returnsFile,commandsFile};
         for (File file : allFile) {
             if (!file.exists()) {
                 INSTANCE.saveResource(file.getName(), true);
@@ -24,7 +28,13 @@ public class Config {
         if (!Config.getBotYamlVersion().equals("1.1")){
             INSTANCE.saveResource(botFile.getName(), true);
         }
-        if (!Config.getConfigYamlVersion().equals("1.1")){
+        if (!Config.getConfigYamlVersion().equals("1.2")){
+            INSTANCE.saveResource(configFile.getName(), true);
+        }
+        if (!Config.getCommandsYamlVersion().equals("1.2")){
+            INSTANCE.saveResource(commandsFile.getName(), true);
+        }
+        if (!Config.getReturnsYamlVersion().equals("1.2")){
             INSTANCE.saveResource(configFile.getName(), true);
         }
     }
@@ -37,9 +47,19 @@ public class Config {
         return getConfigYaml().getString("Ver");
     }
 
+    public static String getCommandsYamlVersion(){
+        return getCommandsYaml().getString("Ver");
+    }
+
+    public static String getReturnsYamlVersion(){
+        return getReturnsYaml().getString("Ver");
+    }
+
     public static void loadConfig(){
         bot = YamlConfiguration.loadConfiguration(botFile);
         config = YamlConfiguration.loadConfiguration(configFile);
+        returns = YamlConfiguration.loadConfiguration(returnsFile);
+        commands = YamlConfiguration.loadConfiguration(commandsFile);
     }
 
     public static YamlConfiguration getBotYaml(){
@@ -49,6 +69,11 @@ public class Config {
     public static YamlConfiguration getConfigYaml() {
         return config;
     }
+
+    public static YamlConfiguration getReturnsYaml() {return returns;}
+
+    public static YamlConfiguration getCommandsYaml() {return commands;}
+
     public static long getBotQQ() {
         return getBotYaml().getLong("Bot.QQ");
     }
@@ -84,4 +109,11 @@ public class Config {
     public static boolean Online(){
         return  getConfigYaml().getBoolean("Online");
     }
+
+    public static boolean TPS() {return getConfigYaml().getBoolean("TPS");}
+
+    public static boolean SDC() {return getConfigYaml().getBoolean("SDC");}
+
+    public static boolean SDR() {return getConfigYaml().getBoolean("SDR");}
+
 }

@@ -11,25 +11,29 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.linear.linearbot.bot.Bot;
 import org.linear.linearbot.config.Config;
 import org.linear.linearbot.hook.AuthMeHook;
+import org.linear.linearbot.hook.QuickShopHook;
+import org.linear.linearbot.hook.ResidenceHook;
 import org.linear.linearbot.tool.StringTool;
 
 import java.util.List;
+
+import static org.linear.linearbot.hook.ResidenceHook.resChatApi;
 
 public class ServerEvent implements Listener{
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
-
-        String name = StringTool.filterColor(event.getPlayer().getDisplayName());
-        String message = StringTool.filterColor(event.getMessage());
-
-        if (!Config.Forwarding()) {
+        if (!Config.Forwarding()){
             return;
         }
+        String name = StringTool.filterColor(event.getPlayer().getDisplayName());
+        String message = StringTool.filterColor(event.getMessage());
         if (AuthMeHook.hasAuthMe) {if (!AuthMeHook.authMeApi.isAuthenticated(event.getPlayer())) {return;} }
+        if (ResidenceHook.hasRes) {if (resChatApi.getPlayerChannel(event.getPlayer().getName()) != null) {return;}}
+        if (QuickShopHook.hasQs) {if (event.getPlayer() == HookEvent.getQsSender() && event.getMessage() == HookEvent.getQsMessage()) {return;}}
         List<Long> groups = Config.getGroupQQs();
-        for (long groupID : groups) {
-            Bot.sendMsg("[服务器]" + name + ":" + message, groupID);
+        for (long groupID : groups){
+            Bot.sendMsg("[服务器]"+name+":"+message,groupID);
         }
     }
 
@@ -68,8 +72,7 @@ public class ServerEvent implements Listener{
             return;
         }
         Player player=event.getEntity();
-        String displayName= player.getDisplayName();
-        String name = StringTool.filterColor(displayName);
+        String name= player.getName();
         Location location=player.getLocation();
         int x= (int) location.getX();
         int y= (int) location.getY();
