@@ -30,7 +30,8 @@ public class ServerEvent implements Listener{
         String message = StringTool.filterColor(event.getMessage());
         if (AuthMeHook.hasAuthMe) {if (!AuthMeHook.authMeApi.isAuthenticated(event.getPlayer())) {return;} }
         if (ResidenceHook.hasRes) {if (resChatApi.getPlayerChannel(event.getPlayer().getName()) != null) {return;}}
-        if (QuickShopHook.hasQs) {if (event.getPlayer() == HookEvent.getQsSender() && event.getMessage() == HookEvent.getQsMessage()) {return;}}
+        if (QuickShopHook.hasQs) {if (event.getPlayer() == QsChatEvent.getQsSender() && event.getMessage() == QsChatEvent.getQsMessage()) {return;}}
+        if (QuickShopHook.hasQsHikari) {if (event.getPlayer() == QsHikariChatEvent.getQsSender() && event.getMessage() == QsHikariChatEvent.getQsMessage()) {return;}}
         List<Long> groups = Config.getGroupQQs();
         for (long groupID : groups){
             Bot.sendMsg("[服务器]"+name+":"+message,groupID);
