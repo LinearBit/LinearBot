@@ -30,7 +30,6 @@ log/
 .DS_Store
 
 # others
-*.jar
 *.war
 *.zip
 *.tar
