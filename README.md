@@ -4,3 +4,5 @@
 二次开发需开源<br>
 发布需征得作者同意并在发布贴底部标识此开源地址<br>
 将开源程序的源码及其二次开发的程序或源码商用需征得作者同意<br>
+<br>
+[![Security Status](https://s.murphysec.com/badge/LinearBit/LinearBot.svg)](https://www.murphysec.com/p/LinearBit/LinearBot)
