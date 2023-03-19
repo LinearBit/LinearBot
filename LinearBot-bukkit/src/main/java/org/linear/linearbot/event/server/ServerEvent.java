@@ -1,6 +1,7 @@
 package org.linear.linearbot.event.server;
 
 import org.bukkit.Location;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -50,7 +51,22 @@ public class ServerEvent implements Listener{
 
         String realName = StringTool.filterColor(player.getName());
 
-        if (Args.WhitelistMode()==1){
+        /*if (Args.WhitelistMode()==1){
+            if (Config.getWhitelistYaml().getString(realName)==null){
+                player.kickPlayer(Config.getConfigYaml().getString("Whitelist.kickMsg"));
+            }
+            List<Long> groups = Config.getGroupQQs();
+            for (long groupID : groups){
+                Bot.sendMsg("玩家"+name+"因为未在白名单中被踢出",groupID);
+            }
+            return;
+        }*/
+        boolean whitelisted = true;
+        YamlConfiguration white = YamlConfiguration.loadConfiguration(Config.WhitelistFile());
+        List<String> names = white.getStringList("name");
+        whitelisted = names.contains(event.getPlayer().getName());
+
+        if(!whitelisted){
             if (Config.getWhitelistYaml().getString(realName)==null){
                 player.kickPlayer(Config.getConfigYaml().getString("Whitelist.kickMsg"));
             }

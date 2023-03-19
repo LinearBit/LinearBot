@@ -16,8 +16,7 @@ DieReport: false
 #白名单
 WhiteList:
   enable: false
-  mode: 0  #mode设置为0则使用原版游戏自带白名单，设置为1则使用插件自带白名单
-  kickMsg: "请加入qq群:xxx申请白名单"  #当mode为1时且玩家因未在白名单中被踢出时显示的消息
+  kickMsg: "请加入qq群:xxx申请白名单"
 
 #执行命令功能
 CMD: true
