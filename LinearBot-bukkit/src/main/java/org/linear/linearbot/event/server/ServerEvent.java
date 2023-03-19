@@ -9,6 +9,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.linear.linearbot.bot.Bot;
+import org.linear.linearbot.config.Args;
 import org.linear.linearbot.config.Config;
 import org.linear.linearbot.hook.AuthMeHook;
 import org.linear.linearbot.hook.GriefDefenderHook;
@@ -43,7 +44,22 @@ public class ServerEvent implements Listener{
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
 
-        String name = StringTool.filterColor(event.getPlayer().getDisplayName());
+        Player player = event.getPlayer();
+
+        String name = StringTool.filterColor(player.getDisplayName());
+
+        String realName = StringTool.filterColor(player.getName());
+
+        if (Args.WhitelistMode()==1){
+            if (Config.getWhitelistYaml().getString(realName)==null){
+                player.kickPlayer(Config.getConfigYaml().getString("Whitelist.kickMsg"));
+            }
+            List<Long> groups = Config.getGroupQQs();
+            for (long groupID : groups){
+                Bot.sendMsg("玩家"+name+"因为未在白名单中被踢出",groupID);
+            }
+            return;
+        }
 
         if (!Config.JoinAndLeave()){
             return;
@@ -81,7 +97,7 @@ public class ServerEvent implements Listener{
         int y= (int) location.getY();
         int z= (int) location.getZ();
         String msg = "死在了"+location.getWorld().getName()+"世界"+"("+x+","+y+","+z+")";
-        ServerManager.sendCmd("msg "+name+" "+msg);
+        ServerManager.sendCmd("msg "+name+" "+msg,0,false);
         List<Long> groups = Config.getGroupQQs();
         for (long groupID : groups){
             Bot.sendMsg("玩家"+name+msg,groupID);

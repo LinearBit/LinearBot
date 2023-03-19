@@ -12,13 +12,17 @@ public class Config {
     private static final File configFile = new File(INSTANCE.getDataFolder(), "config.yml");
     private static final File returnsFile = new File(INSTANCE.getDataFolder(), "returns.yml");
     private static final File commandsFile = new File(INSTANCE.getDataFolder(), "commands.yml");
+    private static final File whitelistFile = new File(INSTANCE.getDataFolder(), "whitelist.yml");
+    private static final File qqlistFile = new File(INSTANCE.getDataFolder(), "qqlist.yml");
     private static YamlConfiguration bot;
     private static YamlConfiguration config;
     private static YamlConfiguration returns;
     private static YamlConfiguration commands;
+    private static YamlConfiguration whitelist;
+    private static YamlConfiguration qqlist;
 
     public static void createConfig(){
-        File[] allFile = {botFile,configFile,returnsFile,commandsFile};
+        File[] allFile = {qqlistFile,botFile,configFile,returnsFile,commandsFile,whitelistFile};
         for (File file : allFile) {
             if (!file.exists()) {
                 INSTANCE.saveResource(file.getName(), true);
@@ -28,14 +32,20 @@ public class Config {
         if (!Config.getBotYamlVersion().equals("1.1")){
             INSTANCE.saveResource(botFile.getName(), true);
         }
-        if (!Config.getConfigYamlVersion().equals("1.2")){
+        if (!Config.getConfigYamlVersion().equals("1.2.2")){
             INSTANCE.saveResource(configFile.getName(), true);
         }
-        if (!Config.getCommandsYamlVersion().equals("1.2")){
+        if (!Config.getCommandsYamlVersion().equals("1.2.2")){
             INSTANCE.saveResource(commandsFile.getName(), true);
         }
         if (!Config.getReturnsYamlVersion().equals("1.2")){
             INSTANCE.saveResource(configFile.getName(), true);
+        }
+        if (!Config.getWhitelistYamlVersion().equals("1.2.2")){
+            INSTANCE.saveResource(whitelistFile.getName(), true);
+        }
+        if (!Config.getQQlistYamlVersion().equals("1.2.2")){
+            INSTANCE.saveResource(qqlistFile.getName(), true);
         }
     }
 
@@ -55,11 +65,19 @@ public class Config {
         return getReturnsYaml().getString("Ver");
     }
 
+    public static String getWhitelistYamlVersion(){
+        return getReturnsYaml().getString("Ver");
+    }
+
+    public static String getQQlistYamlVersion(){ return getQQListYaml().getString("Ver"); }
+
     public static void loadConfig(){
         bot = YamlConfiguration.loadConfiguration(botFile);
         config = YamlConfiguration.loadConfiguration(configFile);
         returns = YamlConfiguration.loadConfiguration(returnsFile);
         commands = YamlConfiguration.loadConfiguration(commandsFile);
+        whitelist = YamlConfiguration.loadConfiguration(whitelistFile);
+        qqlist = YamlConfiguration.loadConfiguration(qqlistFile);
     }
 
     public static YamlConfiguration getBotYaml(){
@@ -73,6 +91,10 @@ public class Config {
     public static YamlConfiguration getReturnsYaml() {return returns;}
 
     public static YamlConfiguration getCommandsYaml() {return commands;}
+
+    public static YamlConfiguration getWhitelistYaml() {return whitelist;}
+
+    public static YamlConfiguration getQQListYaml() {return qqlist;}
 
     public static long getBotQQ() {
         return getBotYaml().getLong("Bot.QQ");
@@ -91,11 +113,11 @@ public class Config {
     }
 
     public static boolean Forwarding(){
-        return  getConfigYaml().getBoolean("Forwarding");
+        return  getConfigYaml().getBoolean("Forwarding.enable");
     }
 
     public static boolean WhiteList(){
-        return  getConfigYaml().getBoolean("WhiteList");
+        return  getConfigYaml().getBoolean("WhiteList.enable");
     }
 
     public static boolean JoinAndLeave(){
@@ -115,5 +137,9 @@ public class Config {
     public static boolean SDC() {return getConfigYaml().getBoolean("SDC");}
 
     public static boolean SDR() {return getConfigYaml().getBoolean("SDR");}
+
+    public static File WhitelistFile() {return whitelistFile;}
+    
+    public static File QQListFile() {return qqlistFile;}
 
 }

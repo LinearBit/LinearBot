@@ -1,14 +1,23 @@
 #机器人功能设置
-Ver: '1.2'
+Ver: "1.2.2"
+
+#QQ群聊命令前缀
+Prefix: "/"
 
 #消息转发
-Forwarding: true
+Forwarding:
+  enable: true
+  mode: 0 #mode设为0即无条件转发消息，设为1则消息前有前缀才会转发消息
+  prefix: "#"
 
 #死亡报告
 DieReport: false
 
 #白名单
-WhiteList: false
+WhiteList:
+  enable: false
+  mode: 0  #mode设置为0则使用原版游戏自带白名单，设置为1则使用插件自带白名单
+  kickMsg: "请加入qq群:xxx申请白名单"  #当mode为1时且玩家因未在白名单中被踢出时显示的消息
 
 #执行命令功能
 CMD: true
