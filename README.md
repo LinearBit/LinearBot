@@ -11,4 +11,4 @@
 <br>
 #bStas
 <br>
-!(https://bstats.org/signatures/bukkit/LinearBot.svg)
+<a href="https://bstats.org/plugin/bukkit/LinearBot/17137">![https://bstats.org/plugin/bukkit/LinearBot/17137](https://bstats.org/signatures/bukkit/CatSero.svg)</a>
