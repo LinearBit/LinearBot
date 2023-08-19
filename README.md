@@ -6,7 +6,7 @@
 
 ## 安全状态
 
-[![Security Status](https://s.murphysec.com/badge/LinearBit/LinearBot.svg)](https://www.murphysec.com/p/LinearBit/LinearBot)
+[![Security Status](https://www.murphysec.com/platform3/v31/badge/1676956296301068288.svg)](https://www.murphysec.com/console/report/1653013114790641664/1676956296301068288)
 
 ## bStats
 
