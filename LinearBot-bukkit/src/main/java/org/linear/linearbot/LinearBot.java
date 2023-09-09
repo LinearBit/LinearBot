@@ -16,8 +16,11 @@ import org.linear.linearbot.hook.GriefDefenderHook;
 import org.linear.linearbot.hook.QuickShopHook;
 import org.linear.linearbot.hook.ResidenceHook;
 import org.linear.linearbot.metrics.Metrics;
+import org.linear.linearbot.event.qq.WhiteList;
 
+import java.sql.SQLException;
 import java.util.List;
+
 
 public final class LinearBot extends JavaPlugin implements Listener{
 
@@ -45,6 +48,12 @@ public final class LinearBot extends JavaPlugin implements Listener{
         getLogger().info("QQ事件监听器注册完毕");
         Bukkit.getServer().getPluginCommand("linearbot").setExecutor(new Commands());
         getLogger().info("命令注册完毕");
+        try {
+            WhiteList.initializeSQLite();
+            getLogger().info("数据库初始化成功");
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
         // All you have to do is adding the following two lines in your onEnable method.
         // You can find the plugin ids of your plugins on the page https://bstats.org/what-is-my-plugin-id
@@ -61,6 +70,14 @@ public final class LinearBot extends JavaPlugin implements Listener{
 
     @Override
     public void onDisable() {
+
+        try {
+            WhiteList.closeSQLite();
+            getLogger().info("数据库已关闭");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         getLogger().info("LinearBot已关闭");
         List<Long> groups = Config.getGroupQQs();
         for (long groupID : groups) {

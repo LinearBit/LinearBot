@@ -9,6 +9,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.linear.linearbot.LinearBot;
 import org.linear.linearbot.bot.Bot;
 import org.linear.linearbot.config.Config;
 import org.linear.linearbot.event.server.ServerManager;
@@ -125,55 +127,28 @@ public class QQEvent implements Listener {
             return;
         }
 
-        pattern = Pattern.compile(Prefix+"申请白名单 .*");
+        pattern = Pattern.compile(Prefix + "申请白名单 .*");
         matcher = pattern.matcher(msg);
         if (matcher.find()) {
-            if(!Config.WhiteList()){
+            if (!Config.WhiteList()) {
                 return;
             }
-            String PlayerName = matcher.group().replace(Prefix+"申请白名单 ", "");
-            if (((MiraiMC.getBind(Bukkit.getOfflinePlayer(PlayerName).getUniqueId()) != 0) || (MiraiMC.getBind(e.getSenderID()) != null))) {
-                MiraiBot.getBot(e.getBotID()).getGroup(e.getGroupID()).sendMessage("绑定失败");
+            String PlayerName = matcher.group().replace(Prefix + "申请白名单 ", "");
+            if (PlayerName.isEmpty()) {
+                Bot.sendMsg("id不能为空", groupID);
                 return;
             }
-            YamlConfiguration white = YamlConfiguration.loadConfiguration(Config.WhitelistFile());
-            List<String> nameList = white.getStringList("name");
-            try {
-                nameList.add(PlayerName);
-                white.set("name", nameList);
-                white.save(Config.WhitelistFile());
-                MiraiMC.addBind(Bukkit.getOfflinePlayer(PlayerName).getUniqueId(),senderID);
-            } catch (IOException ex) {
-                Bot.sendMsg("出现异常:"+ex,groupID);
-            }
-            Bot.sendMsg("成功申请白名单",groupID);
-            return;
-        }
-
-        pattern = Pattern.compile(Prefix+"删除白名单 .*");
-        matcher = pattern.matcher(msg);
-        if (matcher.find()) {
-            if(!Config.WhiteList()){
-                return;
-            }
-            YamlConfiguration white = YamlConfiguration.loadConfiguration(Config.WhitelistFile());
-            List<String> nameList = white.getStringList("name");
-            String name = matcher.group().replace(Prefix+"删除白名单 ", "");
-            if(MiraiMC.getBind(senderID) != Bukkit.getOfflinePlayer(name).getUniqueId()){
-                Bot.sendMsg("你无权这样做",groupID);
-                return;
-            }
-            //ServerManager.sendCmd("whitelist remove "+name,groupID,false);
-
-            try {
-                nameList.remove(name);
-                white.set("name",nameList);
-                white.save(Config.WhitelistFile());
-                MiraiMC.removeBind(Bukkit.getOfflinePlayer(name).getUniqueId());
-            } catch (IOException ex) {
-                Bot.sendMsg("出现异常:"+ex,groupID);
-            }
-            Bot.sendMsg("成功移出白名单",groupID);
+            new BukkitRunnable(){
+                @Override
+                public void run(){
+                    if ((WhiteList.getBind(senderID) != null) || (WhiteList.getBind(PlayerName) != 0L)) {
+                        Bot.sendMsg("玩家已存在", groupID);
+                        return;
+                    }
+                    WhiteList.addBind(PlayerName, senderID);
+                    Bot.sendMsg("成功申请白名单", groupID);
+                }
+            }.runTask(LinearBot.INSTANCE);
             return;
         }
 
@@ -212,27 +187,6 @@ public class QQEvent implements Listener {
                 return;
             }
 
-            pattern = Pattern.compile(Prefix+"删除白名单 .*");
-            matcher = pattern.matcher(msg);
-            if (matcher.find()) {
-                if(!Config.WhiteList()){
-                    return;
-                }
-                YamlConfiguration white = YamlConfiguration.loadConfiguration(Config.WhitelistFile());
-                List<String> nameList = white.getStringList("name");
-                String name = matcher.group().replace(Prefix+"删除白名单 ", "");
-                try {
-                    nameList.remove(name);
-                    white.set("name",nameList);
-                    white.save(Config.WhitelistFile());
-                    MiraiMC.removeBind(Bukkit.getOfflinePlayer(name).getUniqueId());
-                } catch (IOException ex) {
-                    Bot.sendMsg("出现异常:"+ex,groupID);
-                }
-                Bot.sendMsg("成功移出白名单",groupID);
-                return;
-            }
-
             pattern = Pattern.compile(Prefix+".*");
             matcher = pattern.matcher(msg);
             if(matcher.find()){
@@ -247,6 +201,62 @@ public class QQEvent implements Listener {
                 }
             }
 
+            pattern = Pattern.compile(Prefix + "删除白名单 .*");
+            matcher = pattern.matcher(msg);
+            if (matcher.find()) {
+                if (!Config.WhiteList()) {
+                    return;
+                }
+                String name = matcher.group().replace(Prefix + "删除白名单 ", "");
+                if (name.isEmpty()) {
+                    Bot.sendMsg("id不能为空", groupID);
+                    return;
+                }
+                new BukkitRunnable(){
+                    @Override
+                    public void run(){
+                        long nameForId = WhiteList.getBind(name);
+                        if (nameForId == 0L) {
+                            Bot.sendMsg("尚未申请白名单", groupID);
+                            return;
+                        }
+                        WhiteList.removeBind(name);
+                        Bot.sendMsg("成功移出白名单", groupID);
+                    }
+                }.runTask(LinearBot.INSTANCE);
+                return;
+            }
+
+        }
+
+        pattern = Pattern.compile(Prefix + "删除白名单 .*");
+        matcher = pattern.matcher(msg);
+        if (matcher.find()) {
+            if (!Config.WhiteList()) {
+                return;
+            }
+            String name = matcher.group().replace(Prefix + "删除白名单 ", "");
+            new BukkitRunnable(){
+                @Override
+                public void run(){
+                    String idForName = WhiteList.getBind(senderID);
+                    if (idForName == null || idForName.isEmpty()) {
+                        Bot.sendMsg("您尚未申请白名单", groupID);
+                        return;
+                    }
+                    if (name.isEmpty()) {
+                        Bot.sendMsg("id不能为空", groupID);
+                        return;
+                    }
+                    if (!idForName.equals(name)) {
+                        Bot.sendMsg("你无权这样做", groupID);
+                        return;
+                    }
+                    WhiteList.removeBind(name);
+                    Bot.sendMsg("成功移出白名单", groupID);
+                }
+            }.runTask(LinearBot.INSTANCE);
+            return;
         }
 
         if (!Config.Forwarding()){
