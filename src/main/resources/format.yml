@@ -1,0 +1,13 @@
+#机器人消息转发格式设置
+Ver: "1.2.2"
+
+#QQ转发至服务器:
+# %groupName% QQ群聊名占位符
+# %qq_name% QQ名占位符
+# %msg% 转发消息占位符
+Server: '§6[%groupName%]§a%qq_name%§f:%msg%'
+
+#服务器转发至QQ
+# %player_name% 玩家名占位符
+# %msg% 转发消息占位符
+QQ: '[服务器]%player_name%:%msg%'
