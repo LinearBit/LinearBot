@@ -285,21 +285,11 @@ public class QQEvent implements Listener {
     @EventHandler
     public void MemberLeaveEvent(MiraiMemberLeaveEvent event){
         long targetID = event.getTargetID();
-        long groupID = event.getGroupID();
-        UUID uuid = MiraiMC.getBind(targetID);
-        if(uuid == null){
+        String id = WhiteList.getBind(targetID);
+        if(id == null){
             return;
         }
-        YamlConfiguration white = YamlConfiguration.loadConfiguration(Config.WhitelistFile());
-        List<String> nameList = white.getStringList("name");
-        try {
-            nameList.remove(Bukkit.getOfflinePlayer(uuid).getName());
-            white.set("name",nameList);
-            white.save(Config.WhitelistFile());
-            MiraiMC.removeBind(uuid);
-        } catch (IOException ex) {
-            Bot.sendMsg("出现异常:"+ex,groupID);
-        }
+        WhiteList.removeBind(targetID);
     }
 
 

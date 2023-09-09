@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.linear.linearbot.bot.Bot;
 import org.linear.linearbot.config.Args;
 import org.linear.linearbot.config.Config;
+import org.linear.linearbot.event.qq.WhiteList;
 import org.linear.linearbot.hook.AuthMeHook;
 import org.linear.linearbot.hook.GriefDefenderHook;
 import org.linear.linearbot.hook.QuickShopHook;
@@ -61,13 +62,9 @@ public class ServerEvent implements Listener{
             }
             return;
         }*/
-        boolean whitelisted = true;
-        YamlConfiguration white = YamlConfiguration.loadConfiguration(Config.WhitelistFile());
-        List<String> names = white.getStringList("name");
-        whitelisted = names.contains(event.getPlayer().getName());
 
-        if(!whitelisted){
-            if (Config.getWhitelistYaml().getString(realName)==null){
+        if(Config.WhiteList()){
+            if (WhiteList.getBind(realName)==0){
                 player.kickPlayer(Config.getConfigYaml().getString("Whitelist.kickMsg"));
             }
             List<Long> groups = Config.getGroupQQs();
