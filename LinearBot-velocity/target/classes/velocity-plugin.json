@@ -1,1 +1,0 @@
-{"id":"linearbot","name":"LinearBot","version":"1.2.1","description":"A plugin for MiraiMC!","url":"https://github.com/LinearBit/LinearBot","authors":["Linear,RegadPole"],"dependencies":[{"id":"miraimc","optional":false}],"main":"org.linear.linearbot.LinearBot"}
