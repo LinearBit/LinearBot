@@ -36,10 +36,10 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         name: "LinearBot-bukkit.jar"
-        path: linearbot-bukkit/target/LinearBot-bukkit*.jar
+        path: LinearBot-bukkit/target/LinearBot-bukkit*.jar
 
     - name: Upload a Build Artifact - LinearBot-velocity
       uses: actions/upload-artifact@v3.1.2
       with:
         name: "LinearBot-velocity.jar"
-        path: linearbot-velocity/target/LinearBot-velocity*.jar
+        path: LinearBot-velocity/target/LinearBot-velocity*.jar
