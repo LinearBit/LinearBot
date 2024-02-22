@@ -4,9 +4,11 @@ import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.linear.linearbot.bot.Bot;
@@ -25,7 +27,7 @@ import static org.linear.linearbot.hook.ResidenceHook.resChatApi;
 
 public class ServerEvent implements Listener{
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onChat(AsyncPlayerChatEvent event) {
         if (!Config.Forwarding()){
             return;
@@ -43,6 +45,23 @@ public class ServerEvent implements Listener{
         }
     }
 
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onPreLogin(AsyncPlayerPreLoginEvent event){
+        String name = event.getName();
+
+        if(Config.WhiteList()){
+            if (WhiteList.getBind(name)==0) {
+                event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, Config.getConfigYaml().getString("Whitelist.kickMsg"));
+                List<Long> groups = Config.getGroupQQs();
+                for (long groupID : groups) {
+                    Bot.sendMsg("玩家" + name + "因为未在白名单中被踢出", groupID);
+                }
+                return;
+            }
+            event.allow();
+        }
+    }
+
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
 
@@ -51,28 +70,6 @@ public class ServerEvent implements Listener{
         String name = StringTool.filterColor(player.getDisplayName());
 
         String realName = StringTool.filterColor(player.getName());
-
-        /*if (Args.WhitelistMode()==1){
-            if (Config.getWhitelistYaml().getString(realName)==null){
-                player.kickPlayer(Config.getConfigYaml().getString("Whitelist.kickMsg"));
-            }
-            List<Long> groups = Config.getGroupQQs();
-            for (long groupID : groups){
-                Bot.sendMsg("玩家"+name+"因为未在白名单中被踢出",groupID);
-            }
-            return;
-        }*/
-
-        if(Config.WhiteList()){
-            if (WhiteList.getBind(realName)==0){
-                player.kickPlayer(Config.getConfigYaml().getString("Whitelist.kickMsg"));
-            }
-            List<Long> groups = Config.getGroupQQs();
-            for (long groupID : groups){
-                Bot.sendMsg("玩家"+name+"因为未在白名单中被踢出",groupID);
-            }
-            return;
-        }
 
         if (!Config.JoinAndLeave()){
             return;
