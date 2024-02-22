@@ -57,10 +57,10 @@
     </build>
 
     <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
+<!--        <repository>-->
+<!--            <id>jitpack.io</id>-->
+<!--            <url>https://jitpack.io</url>-->
+<!--        </repository>-->
         <!--
         <repository>
             <id>sonatype</id>
@@ -73,10 +73,10 @@
         <dependency>
             <groupId>io.github.dreamvoid</groupId>
             <artifactId>MiraiMC-Integration</artifactId>
-            <!--请确保版本为Github上的最新版本-->
             <version>1.8.3</version>
             <scope>provided</scope>
         </dependency>
+
         <!--
         <dependency>
             <groupId>org.bstats</groupId>
