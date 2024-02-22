@@ -13,7 +13,7 @@ public class QsHikariChatEvent implements Listener {
     @EventHandler(priority = EventPriority.HIGH)
     public void onQSChat (com.ghostchu.quickshop.api.event.QSHandleChatEvent e){
         setQsMessage(e.getMessage());
-        setQsSender(e.getSender());
+        setQsSender((Player) e.getSender());
     }
 
 
