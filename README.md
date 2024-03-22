@@ -12,3 +12,8 @@
 ## 安全状态
 
 [![Security Status](https://www.murphysec.com/platform3/v31/badge/1676956296301068288.svg)](https://www.murphysec.com/console/report/1653013114790641664/1676956296301068288)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLinearBit%2FLinearBot.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FLinearBit%2FLinearBot?ref=badge_shield)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FLinearBit%2FLinearBot.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FLinearBit%2FLinearBot?ref=badge_large)
