@@ -1,5 +1,6 @@
 # LinearBot
 适用Minecraft Java版本：1.16+（需v1.2及以上插件)
+使用本插件需要前置插件[MiraiMC](https://github.com/DreamVoid/MiraiMC/)
 
 本项目使用GNU AGPL3.0协议开源
 
